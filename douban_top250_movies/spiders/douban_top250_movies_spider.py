@@ -25,13 +25,13 @@ class DoubanTop250MoviesSpider(CrawlSpider):
         sel = Selector(response)
 
         # Search the item with xpath and return with a list
-        movie_name = sel.xpath('//div[@class="pic"]/a/img/@alt').extract()
-        movie_score = sel.xpath('//span[@class="rating_num"]/text()').extract()
+        movie_names = sel.xpath('//div[@class="pic"]/a/img/@alt').extract()
+        movie_scores = sel.xpath('//span[@class="rating_num"]/text()').extract()
 
         # State a instance of DoubanNewMovieItem and save all items with a loop
         item = DoubanTop250MoviesItem()
-        item['movie_name'] = [n.encode('utf-8') for n in movie_name]
-        item['movie_score'] = [n for n in movie_score]
+        item['movie_name'] = [movie_name.encode('utf-8') for movie_name in movie_names]
+        item['movie_score'] = [movie_score for movie_score in movie_scores]
 
         # Print to the console
         print item
