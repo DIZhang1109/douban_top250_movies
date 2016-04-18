@@ -4,6 +4,7 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 import pymongo
+import settings
 from matplotlib.font_manager import FontProperties
 
 plt.rcdefaults()
@@ -13,16 +14,16 @@ font = FontProperties(fname=r'resources/造字工房可可体.ttf', size=12)
 
 def pic_show(con_name, movie_field, x_label, y_label, title):
     # Retrieve data from mongoDB
-    client = pymongo.MongoClient('localhost', 27017)
-    db = client['douban_top250_movies']
-    connection = db[con_name]
+    client = pymongo.MongoClient(settings.MONGODB_URL, settings.MONGODB_PORT)
+    db = client[settings.MONGODB_DB]
+    collection = db[con_name]
 
     # Define two lists to save the data
     count = []
     movie_property = []
 
     # Append data into two lists respectively
-    for item in connection.find():
+    for item in collection.find():
         count.append(item['count'])
         movie_property.append(item[movie_field])
 

@@ -60,7 +60,7 @@ class DoubanTop250MoviesSpider(CrawlSpider):
         for j in movie_information:
             # Split with '/'
             j = j.split('/')
-            # Choose the last part of the split result
+            # Choose the last two part of the split result
             j = j[len(j) - 2]
             # Remove whitespace characters in the beginning and the end
             j = j.strip()

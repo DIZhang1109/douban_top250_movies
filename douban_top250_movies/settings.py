@@ -61,7 +61,7 @@ USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'douban_top250_movies.pipelines.DoubanTop250MoviesPipeline': 300
+    'douban_top250_movies.pipelines.DoubanTop250MoviesPipeline': 300
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -82,3 +82,11 @@ ITEM_PIPELINES = {
 # HTTPCACHE_DIR='httpcache'
 # HTTPCACHE_IGNORE_HTTP_CODES=[]
 # HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# MongoDB properties
+MONGODB_URL = 'localhost'
+MONGODB_PORT = 27017
+MONGODB_DB = 'douban_top250_movies'
+MONGODB_COLLECTION_NAME = 'name'
+MONGODB_COLLECTION_CATEGORY = 'category'
+MONGODB_COLLECTION_COUNTRY = 'country'
